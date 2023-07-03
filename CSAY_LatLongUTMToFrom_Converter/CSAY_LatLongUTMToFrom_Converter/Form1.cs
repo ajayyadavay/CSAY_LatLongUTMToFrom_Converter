@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using SharpKml.Dom;
+using SharpKml.Base;
+using SharpKml.Engine;
 
 namespace CSAY_LatLongUTMToFrom_Converter
 {
@@ -61,8 +64,11 @@ namespace CSAY_LatLongUTMToFrom_Converter
         {
             string dir = Environment.CurrentDirectory + "\\Ellipsoid";
             string[] files = Directory.GetFiles(dir, "*.proj", SearchOption.AllDirectories);//Directory.GetFiles(dir);
-
             foreach (string filePath in files) ComboBoxProjFile.Items.Add(Path.GetFileName(filePath));
+
+
+            string[] files1 = Directory.GetFiles(dir, "*.txt", SearchOption.AllDirectories);//Directory.GetFiles(dir);
+            foreach (string filePath in files1) ComboBoxProjFile.Items.Add(Path.GetFileName(filePath));
             //Path.GetFileName(filePath) or Path.GetFileNameWithoutExtension(filePath);
         }
 
@@ -494,45 +500,6 @@ namespace CSAY_LatLongUTMToFrom_Converter
             }
         }
 
-        private void exportToExcelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                CopyAlltoClipboard();
-                Microsoft.Office.Interop.Excel.Application xlexcel;
-                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-                object misValue = System.Reflection.Missing.Value;
-                xlexcel = new Excel.Application();
-                xlexcel.Visible = true;
-                xlWorkBook = xlexcel.Workbooks.Add(misValue);
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-
-                ((Excel.Range)xlWorkSheet.Cells[1, 1]).Value = "LatLong To XY in UTM WGS 84 " + DateTime.Now.ToString("yyyy/MM/dd_HH:mm:ss");
-
-                //((Excel.Range)xlWorkSheet.Cells[2, 1]).Value = "Projection system";
-                //value of IMS in Cell[1,2]
-                //((Excel.Range)xlWorkSheet.Cells[2, 2]).Value = "UTM WGS 84";
-
-
-                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[3, 1];
-                CR.Select();
-                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
-                // xlWorkBook.Close();
-                //  xlexcel.Quit();
-                Marshal.ReleaseComObject(xlWorkBook);
-                Marshal.ReleaseComObject(xlWorkSheet);
-
-                MessageBox.Show("Export Completed Sucessfully.");
-
-            }
-            catch
-            {
-
-            }
-        }
-
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             copyToolStripMenuItem_Click(sender, e);
@@ -606,6 +573,117 @@ namespace CSAY_LatLongUTMToFrom_Converter
         {
             FrmAbout fabout = new FrmAbout();
             fabout.Show();
+        }
+
+        private void latLongToKMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            double lat1, long1;
+
+
+            string path = "";
+            SaveFileDialog savefiledialog1 = new SaveFileDialog();
+            savefiledialog1.Filter = "KML Files(*.kml)|*.kml";//"Text File(*.txt)|*.txt|Excel Sheet(*.xls)|*.xls|All Files(*.*)|*.*";
+            savefiledialog1.FilterIndex = 1;
+
+            if (savefiledialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                path = savefiledialog1.FileName;
+                //LoadTxtToDatagridview(dataGridView1, path, 1, 3);
+            }
+            else if (savefiledialog1.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return;
+
+
+
+            string MyFolder = path;
+
+            var serializer = new Serializer();
+
+            //Vertical i.e., perpendicular points
+            var document_VP = new SharpKml.Dom.Document
+            {
+                Description = new SharpKml.Dom.Description
+                {
+                    Text = "Detail of points lat long"
+                },
+                Name = "PointsName"
+            };
+
+            // This will be used for the placemark-----------------
+            int lstrow = dataGridView1.RowCount - 1;
+            for (int i = 0; i < lstrow; i++)
+            {
+                if(latLongToEastNorthToolStripMenuItem.Checked == true)
+                {
+                    lat1 = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
+                    long1 = Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value);
+                }
+                else
+                {
+                    lat1 = Convert.ToDouble(dataGridView1.Rows[i].Cells[3].Value);
+                    long1 = Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+                }
+
+                SharpKml.Dom.Point ptV = new SharpKml.Dom.Point();
+
+                ptV.Coordinate = new SharpKml.Base.Vector(lat1, long1);
+                SharpKml.Dom.Placemark placemark_VP = new SharpKml.Dom.Placemark();
+                placemark_VP.Name = i.ToString() + "_" + dataGridView1.Rows[i].Cells[0].Value.ToString();
+                placemark_VP.Geometry = ptV;
+                document_VP.AddFeature(placemark_VP);
+
+            }
+
+            // This is the root element of the file--------------------------
+            var kmlVP = new Kml
+            {
+                Feature = document_VP
+            };
+            //var serializer = new Serializer();
+            //string kmlfilename = Environment.CurrentDirectory + "\\KML_Files" + "\\ThisKML.kml";
+            string kmlfilenameVP = MyFolder;
+            FileStream fileStreamVP = new FileStream(kmlfilenameVP, FileMode.OpenOrCreate);
+            serializer.Serialize(kmlVP, fileStreamVP);
+
+            MessageBox.Show("Points exported to KML");
+        }
+
+        private void tableToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CopyAlltoClipboard();
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+
+                ((Excel.Range)xlWorkSheet.Cells[1, 1]).Value = "LatLong To XY in UTM WGS 84 " + DateTime.Now.ToString("yyyy/MM/dd_HH:mm:ss");
+
+                //((Excel.Range)xlWorkSheet.Cells[2, 1]).Value = "Projection system";
+                //value of IMS in Cell[1,2]
+                //((Excel.Range)xlWorkSheet.Cells[2, 2]).Value = "UTM WGS 84";
+
+
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[3, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+                // xlWorkBook.Close();
+                //  xlexcel.Quit();
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(xlWorkSheet);
+
+                MessageBox.Show("Export Completed Sucessfully.");
+
+            }
+            catch
+            {
+
+            }
         }
     }
 }

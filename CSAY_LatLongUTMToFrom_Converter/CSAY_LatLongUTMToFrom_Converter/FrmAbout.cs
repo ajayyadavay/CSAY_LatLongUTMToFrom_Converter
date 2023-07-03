@@ -27,15 +27,30 @@ namespace CSAY_LatLongUTMToFrom_Converter
             RichTxtAbout.SelectedText += "Name: CSAY_LATLONG_UTM_TOFROM_CONVERTER";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectionColor = Color.Black;
-            RichTxtAbout.SelectedText += "Feature: Converts latitude, lontidute to Easting, Northing and vice-versa";
+            //RichTxtAbout.SelectionColor = Color.Black;
+            RichTxtAbout.SelectedText += "Features:";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectionColor = Color.Black;
+            RichTxtAbout.SelectedText += "\ta. Converts latitude, lontidute to Easting, Northing";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += "\tb. Converts Easting, Northing to latitude, lontidute";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += "\tc. Exports latitude, lontidute to Kml";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += "\td. Exports converted table to excel";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += "\te. Allows user to choose their datum/ellipsoid";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            //RichTxtAbout.SelectionColor = Color.Black;
             RichTxtAbout.SelectedText += "This is contiuation of software at https://github.com/ajayyadavay/LatLongToXYConverter";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectionColor = Color.Black;
+            //RichTxtAbout.SelectionColor = Color.Black;
             RichTxtAbout.SelectedText += "Created by: Ajay Yadav";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
@@ -61,7 +76,7 @@ namespace CSAY_LatLongUTMToFrom_Converter
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             RichTxtAbout.SelectionColor = Color.Black;
-            RichTxtAbout.SelectedText += "1. Choose \"*.proj\" file and click in \"File>load ellipsoid parameter\" menu";
+            RichTxtAbout.SelectedText += "1. Choose \"*.proj or *.txt\" file and click in \"File>load ellipsoid parameter\" menu";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             RichTxtAbout.SelectedText += "2. File>Import txt";
@@ -70,7 +85,10 @@ namespace CSAY_LatLongUTMToFrom_Converter
             RichTxtAbout.SelectedText += "3. File>Calculate LatLongToEastNorth";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectedText += "4. File>Export to Excel";
+            RichTxtAbout.SelectedText += "4. Export>LatLong to Kml";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += "5. Export>Table to Excel";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             RichTxtAbout.SelectedText += Environment.NewLine;
@@ -79,10 +97,10 @@ namespace CSAY_LatLongUTMToFrom_Converter
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             RichTxtAbout.SelectionColor = Color.Black;
-            RichTxtAbout.SelectedText += "1. Mode: Choose latlong to EastNort or EastNorth to LatLong";
+            RichTxtAbout.SelectedText += "1. Mode: Choose LatLong to EastNorth or EastNorth to LatLong";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectedText += "2. Choose Input Zone or CM: If the *proj file contains Zone then choose Zone otherwise CM";
+            RichTxtAbout.SelectedText += "2. Choose Input Zone or CM: If the *.proj or *.txt file contains Zone then choose Zone otherwise CM";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             RichTxtAbout.SelectedText += "3. Choose Import or Generate Row: You can input data by importing files or generating rows and entering/pasting your data";
