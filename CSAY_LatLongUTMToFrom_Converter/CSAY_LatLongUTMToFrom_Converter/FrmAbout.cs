@@ -105,6 +105,21 @@ namespace CSAY_LatLongUTMToFrom_Converter
 
             RichTxtAbout.SelectedText += "3. Choose Import or Generate Row: You can input data by importing files or generating rows and entering/pasting your data";
             RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += Environment.NewLine;
+            RichTxtAbout.SelectionColor = Color.Magenta;
+            RichTxtAbout.SelectedText += "Zone to Central Meridian and vice-versa conversion formula";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectionColor = Color.Black;
+            RichTxtAbout.SelectedText += "1. Zone = (CM + 180 + 3) / 6";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += "2. CM = Zone * 6 - 180 - 3";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
+            RichTxtAbout.SelectedText += "Note: There are 60 Zones in UTM, each with 6-degree longitude width";
+            RichTxtAbout.SelectedText += Environment.NewLine;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
