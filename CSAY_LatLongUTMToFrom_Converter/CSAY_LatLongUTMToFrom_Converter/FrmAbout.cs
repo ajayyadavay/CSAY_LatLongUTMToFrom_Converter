@@ -79,7 +79,7 @@ namespace CSAY_LatLongUTMToFrom_Converter
             RichTxtAbout.SelectedText += "1. Choose \"*.proj or *.txt\" file and click in \"File>load ellipsoid parameter\" menu";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectedText += "2. File>Import txt";
+            RichTxtAbout.SelectedText += "2. File>Import txt or you can drag and drop the text file over the grey area of the table";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             RichTxtAbout.SelectedText += "3. File>Calculate LatLongToEastNorth";

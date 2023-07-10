@@ -205,26 +205,26 @@
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(109, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -399,6 +399,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowDrop = true;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
@@ -430,6 +431,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(961, 373);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragDrop);
+            this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragEnter);
             // 
             // ColSN
             // 
@@ -579,15 +582,15 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(283, 18);
+            this.label7.Size = new System.Drawing.Size(286, 18);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Choose File (*.pro/*.txt) in Ellipsoid Folder";
+            this.label7.Text = "Choose File (*.proj/*.txt) in Ellipsoid Folder";
             // 
             // TxtProjFile
             // 
             this.TxtProjFile.Location = new System.Drawing.Point(6, 81);
             this.TxtProjFile.Name = "TxtProjFile";
-            this.TxtProjFile.Size = new System.Drawing.Size(257, 24);
+            this.TxtProjFile.Size = new System.Drawing.Size(286, 24);
             this.TxtProjFile.TabIndex = 13;
             // 
             // ComboBoxProjFile
@@ -596,7 +599,7 @@
             this.ComboBoxProjFile.FormattingEnabled = true;
             this.ComboBoxProjFile.Location = new System.Drawing.Point(6, 49);
             this.ComboBoxProjFile.Name = "ComboBoxProjFile";
-            this.ComboBoxProjFile.Size = new System.Drawing.Size(257, 26);
+            this.ComboBoxProjFile.Size = new System.Drawing.Size(286, 26);
             this.ComboBoxProjFile.TabIndex = 12;
             this.ComboBoxProjFile.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProjFile_SelectedIndexChanged);
             // 

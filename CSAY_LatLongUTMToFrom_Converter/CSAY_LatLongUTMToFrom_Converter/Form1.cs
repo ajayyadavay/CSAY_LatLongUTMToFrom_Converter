@@ -685,5 +685,46 @@ namespace CSAY_LatLongUTMToFrom_Converter
 
             }
         }
+
+        private void dataGridView1_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the Data format of the file(s) can be accepted
+            // (we only accept file drops from Windows Explorer, etc.)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // modify the drag drop effects to Move
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                // no need for any drag drop effect
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void dataGridView1_DragDrop(object sender, DragEventArgs e)
+        {
+            // still check if the associated data from the file(s) can be used for this purpose
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // Fetch the file(s) names with full path here to be processed
+                string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string path = fileList[0];
+
+                // Your desired code goes here to process the file(s) being dropped
+
+                try
+                {
+                    LoadTxtToDatagridview(dataGridView1, path, 1, 3);
+
+                }
+
+                catch
+                {
+
+                }
+                //MessageBox.Show("IMPORT COMPLETE !");
+            }
+        }
     }
 }
