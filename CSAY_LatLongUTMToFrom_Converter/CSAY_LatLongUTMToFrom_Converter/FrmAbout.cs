@@ -27,17 +27,21 @@ namespace CSAY_LatLongUTMToFrom_Converter
             RichTxtAbout.SelectedText += "Name: CSAY_LATLONG_UTM_TOFROM_CONVERTER";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
+            RichTxtAbout.SelectionColor = Color.Black;
+            RichTxtAbout.SelectedText += "License: GNU GENERAL PUBLIC LICENSE V3.0";
+            RichTxtAbout.SelectedText += Environment.NewLine;
+
             //RichTxtAbout.SelectionColor = Color.Black;
             RichTxtAbout.SelectedText += "Features:";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectedText += "\ta. Converts latitude, lontidute to Easting, Northing";
+            RichTxtAbout.SelectedText += "\ta. Converts latitude, longitude to Easting, Northing";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectedText += "\tb. Converts Easting, Northing to latitude, lontidute";
+            RichTxtAbout.SelectedText += "\tb. Converts Easting, Northing to latitude, longitude";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
-            RichTxtAbout.SelectedText += "\tc. Exports latitude, lontidute to Kml";
+            RichTxtAbout.SelectedText += "\tc. Exports latitude, longitude to Kml";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             RichTxtAbout.SelectedText += "\td. Exports converted table to excel";
@@ -47,7 +51,7 @@ namespace CSAY_LatLongUTMToFrom_Converter
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             //RichTxtAbout.SelectionColor = Color.Black;
-            RichTxtAbout.SelectedText += "This is contiuation of software at https://github.com/ajayyadavay/LatLongToXYConverter";
+            RichTxtAbout.SelectedText += "This is continuation of software at https://github.com/ajayyadavay/LatLongToXYConverter";
             RichTxtAbout.SelectedText += Environment.NewLine;
 
             //RichTxtAbout.SelectionColor = Color.Black;
