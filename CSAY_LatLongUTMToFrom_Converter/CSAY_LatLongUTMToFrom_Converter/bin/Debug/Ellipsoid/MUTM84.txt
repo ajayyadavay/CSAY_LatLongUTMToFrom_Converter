@@ -1,0 +1,9 @@
+Ellipsoid	MUTM84_Everest_1830
+Projection	UTM
+CM	84
+MajorAxis_a	6377276.345
+1/f	300.8017 
+K0	0.9999
+M0	0
+phi0_DD	0
+False_Easting_X	500000.0
