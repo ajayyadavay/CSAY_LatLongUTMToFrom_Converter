@@ -1,0 +1,15 @@
+Datum Transformation Parameters
+From_Ellipsoid	WGS84
+MajorAxis_a1	6378137
+1/f1	298.257223563
+Method	Seven_Parameters
+dx_meter	124.3813
+dy_meter	-521.67
+dz_meter	-764.5137
+rx_seconds	-17.1488
+ry_seconds	8.11536
+rz_seconds	-11.1842
+s_ppm	2.1105
+TO_Ellipsoid	Everest1830
+MajorAxis_a2	6377276.345
+1/f2	300.8017

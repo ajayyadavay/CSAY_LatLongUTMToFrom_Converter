@@ -726,5 +726,11 @@ namespace CSAY_LatLongUTMToFrom_Converter
                 //MessageBox.Show("IMPORT COMPLETE !");
             }
         }
+
+        private void datumTransformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTransformation ft = new FrmTransformation();
+            ft.Show();
+        }
     }
 }
