@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColParameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +41,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadDatumTransformationParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importLLHtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +61,10 @@
             this.TxtDatumFile = new System.Windows.Forms.TextBox();
             this.ComboBoxDatumFile = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblImportGenerate = new System.Windows.Forms.Label();
             this.ColPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLat1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLong1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,11 +78,9 @@
             this.ColLat2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLong2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Colh2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblImportGenerate = new System.Windows.Forms.Label();
-            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reverseTransformationParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -87,29 +90,29 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColParameters,
             this.ColValue});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Location = new System.Drawing.Point(12, 177);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -146,9 +149,12 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadDatumTransformationParametersToolStripMenuItem,
+            this.toolStripMenuItem4,
             this.importLLHtxtToolStripMenuItem,
             this.exportToExcelToolStripMenuItem,
             this.toolStripMenuItem1,
+            this.reverseTransformationParameterToolStripMenuItem,
+            this.toolStripMenuItem3,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -169,6 +175,13 @@
             this.importLLHtxtToolStripMenuItem.Text = "Import LLH (*.txt)";
             this.importLLHtxtToolStripMenuItem.Click += new System.EventHandler(this.importLLHtxtToolStripMenuItem_Click);
             // 
+            // exportToExcelToolStripMenuItem
+            // 
+            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
+            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.exportToExcelToolStripMenuItem.Text = "Export to Excel";
+            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportToExcelToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -179,6 +192,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // transformationToolStripMenuItem
             // 
@@ -326,15 +340,16 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowDrop = true;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColPoint,
@@ -351,86 +366,20 @@
             this.ColLong2,
             this.Colh2});
             this.dataGridView2.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.Location = new System.Drawing.Point(327, 177);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(1031, 422);
             this.dataGridView2.TabIndex = 5;
-            // 
-            // ColPoint
-            // 
-            this.ColPoint.HeaderText = "Point";
-            this.ColPoint.Name = "ColPoint";
-            this.ColPoint.Width = 50;
-            // 
-            // ColLat1
-            // 
-            this.ColLat1.HeaderText = "Latitude1";
-            this.ColLat1.Name = "ColLat1";
-            // 
-            // ColLong1
-            // 
-            this.ColLong1.HeaderText = "Longitude1";
-            this.ColLong1.Name = "ColLong1";
-            // 
-            // Colh1
-            // 
-            this.Colh1.HeaderText = "Ellipsoid Height1";
-            this.Colh1.Name = "Colh1";
-            this.Colh1.Width = 60;
-            // 
-            // ColX1
-            // 
-            this.ColX1.HeaderText = "X1";
-            this.ColX1.Name = "ColX1";
-            // 
-            // ColY1
-            // 
-            this.ColY1.HeaderText = "Y1";
-            this.ColY1.Name = "ColY1";
-            // 
-            // ColZ1
-            // 
-            this.ColZ1.HeaderText = "Z1";
-            this.ColZ1.Name = "ColZ1";
-            // 
-            // ColX2
-            // 
-            this.ColX2.HeaderText = "X2";
-            this.ColX2.Name = "ColX2";
-            // 
-            // ColY2
-            // 
-            this.ColY2.HeaderText = "Y2";
-            this.ColY2.Name = "ColY2";
-            // 
-            // ColZ2
-            // 
-            this.ColZ2.HeaderText = "Z2";
-            this.ColZ2.Name = "ColZ2";
-            // 
-            // ColLat2
-            // 
-            this.ColLat2.HeaderText = "Latitude2";
-            this.ColLat2.Name = "ColLat2";
-            // 
-            // ColLong2
-            // 
-            this.ColLong2.HeaderText = "Longitude2";
-            this.ColLong2.Name = "ColLong2";
-            // 
-            // Colh2
-            // 
-            this.Colh2.HeaderText = "Ellipsoid Height2";
-            this.Colh2.Name = "Colh2";
-            this.Colh2.Width = 60;
+            this.dataGridView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView2_DragDrop);
+            this.dataGridView2.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView2_DragEnter);
             // 
             // contextMenuStrip1
             // 
@@ -464,12 +413,113 @@
             this.lblImportGenerate.TabIndex = 22;
             this.lblImportGenerate.Text = "Choose {Import or Generate Row}: Import";
             // 
-            // exportToExcelToolStripMenuItem
+            // ColPoint
             // 
-            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
-            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
-            this.exportToExcelToolStripMenuItem.Text = "Export to Excel";
-            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportToExcelToolStripMenuItem_Click);
+            this.ColPoint.HeaderText = "Point";
+            this.ColPoint.Name = "ColPoint";
+            this.ColPoint.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColPoint.Width = 50;
+            // 
+            // ColLat1
+            // 
+            this.ColLat1.HeaderText = "Latitude1";
+            this.ColLat1.Name = "ColLat1";
+            this.ColLat1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColLat1.Width = 85;
+            // 
+            // ColLong1
+            // 
+            this.ColLong1.HeaderText = "Longitude1";
+            this.ColLong1.Name = "ColLong1";
+            this.ColLong1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColLong1.Width = 85;
+            // 
+            // Colh1
+            // 
+            this.Colh1.HeaderText = "Ellipsoid Height1";
+            this.Colh1.Name = "Colh1";
+            this.Colh1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Colh1.Width = 63;
+            // 
+            // ColX1
+            // 
+            this.ColX1.HeaderText = "X1";
+            this.ColX1.Name = "ColX1";
+            this.ColX1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColX1.Width = 90;
+            // 
+            // ColY1
+            // 
+            this.ColY1.HeaderText = "Y1";
+            this.ColY1.Name = "ColY1";
+            this.ColY1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColY1.Width = 90;
+            // 
+            // ColZ1
+            // 
+            this.ColZ1.HeaderText = "Z1";
+            this.ColZ1.Name = "ColZ1";
+            this.ColZ1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColZ1.Width = 90;
+            // 
+            // ColX2
+            // 
+            this.ColX2.HeaderText = "X2";
+            this.ColX2.Name = "ColX2";
+            this.ColX2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColX2.Width = 90;
+            // 
+            // ColY2
+            // 
+            this.ColY2.HeaderText = "Y2";
+            this.ColY2.Name = "ColY2";
+            this.ColY2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColY2.Width = 90;
+            // 
+            // ColZ2
+            // 
+            this.ColZ2.HeaderText = "Z2";
+            this.ColZ2.Name = "ColZ2";
+            this.ColZ2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColZ2.Width = 90;
+            // 
+            // ColLat2
+            // 
+            this.ColLat2.HeaderText = "Latitude2";
+            this.ColLat2.Name = "ColLat2";
+            this.ColLat2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColLat2.Width = 85;
+            // 
+            // ColLong2
+            // 
+            this.ColLong2.HeaderText = "Longitude2";
+            this.ColLong2.Name = "ColLong2";
+            this.ColLong2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColLong2.Width = 85;
+            // 
+            // Colh2
+            // 
+            this.Colh2.HeaderText = "Ellipsoid Height2";
+            this.Colh2.Name = "Colh2";
+            this.Colh2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Colh2.Width = 63;
+            // 
+            // reverseTransformationParameterToolStripMenuItem
+            // 
+            this.reverseTransformationParameterToolStripMenuItem.Name = "reverseTransformationParameterToolStripMenuItem";
+            this.reverseTransformationParameterToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.reverseTransformationParameterToolStripMenuItem.Text = "Reverse Transformation Parameter";
+            this.reverseTransformationParameterToolStripMenuItem.Click += new System.EventHandler(this.reverseTransformationParameterToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(306, 6);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(306, 6);
             // 
             // FrmTransformation
             // 
@@ -514,19 +564,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ToolStripMenuItem loadDatumTransformationParametersToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColPoint;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColLat1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColLong1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Colh1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColY1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColZ1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColX2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColY2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColZ2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColLat2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColLong2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Colh2;
         private System.Windows.Forms.ToolStripMenuItem transformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem geodeticTo3DCartesianForDatum1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dCartesianTransformationUsing7ParameterToolStripMenuItem;
@@ -545,5 +582,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColParameters;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColValue;
         private System.Windows.Forms.ToolStripMenuItem exportToExcelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem reverseTransformationParameterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPoint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLat1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLong1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Colh1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColX1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColY1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColZ1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColX2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColY2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColZ2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLat2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLong2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Colh2;
     }
 }

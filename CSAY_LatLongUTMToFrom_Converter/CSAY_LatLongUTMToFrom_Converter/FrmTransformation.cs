@@ -515,5 +515,81 @@ namespace CSAY_LatLongUTMToFrom_Converter
 
             }
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void reverseTransformationParameterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Swap(dataGridView1, 0, 1, 11, 1);//swap Datum Names
+            Swap(dataGridView1, 1, 1, 12, 1);//swap Datum Names
+            Swap(dataGridView1, 2, 1, 13, 1);//swap Datum Names
+
+            for(int i =4; i<=10; i++)
+            {
+                double a = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
+                a = a * -1;
+                dataGridView1.Rows[i].Cells[1].Value = a;
+            }
+
+            groupBox1.Text = "From Ellipsoid: " + dataGridView1.Rows[0].Cells[1].Value + " To: " + dataGridView1.Rows[11].Cells[1].Value;
+        }
+
+        private void Swap(DataGridView DGV, int rowNoA, int colNoA, int rowNoB, int colNoB)
+        {
+            string temp, a, b;
+            a = DGV.Rows[rowNoA].Cells[colNoA].Value.ToString();
+            b = DGV.Rows[rowNoB].Cells[colNoB].Value.ToString();
+
+            temp = a;
+            a = b;
+            b = temp;
+
+            DGV.Rows[rowNoA].Cells[colNoA].Value = a;
+            DGV.Rows[rowNoB].Cells[colNoB].Value = b;
+        }
+
+        private void dataGridView2_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the Data format of the file(s) can be accepted
+            // (we only accept file drops from Windows Explorer, etc.)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // modify the drag drop effects to Move
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                // no need for any drag drop effect
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void dataGridView2_DragDrop(object sender, DragEventArgs e)
+        {
+            // still check if the associated data from the file(s) can be used for this purpose
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // Fetch the file(s) names with full path here to be processed
+                string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string path = fileList[0];
+
+                // Your desired code goes here to process the file(s) being dropped
+
+                try
+                {
+                    LoadTxtToDatagridview(dataGridView2, path, 1, 4);
+
+                }
+
+                catch
+                {
+
+                }
+                //MessageBox.Show("IMPORT COMPLETE !");
+            }
+        }
     }
 }
