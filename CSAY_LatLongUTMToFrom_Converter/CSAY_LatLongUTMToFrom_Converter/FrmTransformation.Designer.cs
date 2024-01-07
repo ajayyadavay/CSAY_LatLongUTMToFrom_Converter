@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColParameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadDatumTransformationParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importLLHtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +49,10 @@
             this.dCartesianToGeodeticForDatum2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.autoProcessAllThreeStepsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importOrGenerateRowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateRowsModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtRowsNo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -66,17 +73,11 @@
             this.ColLat2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLong2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Colh2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblImportGenerate = new System.Windows.Forms.Label();
-            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importOrGenerateRowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generateRowsModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importLLHtxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ColParameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblImportGenerate = new System.Windows.Forms.Label();
+            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,34 +87,48 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColParameters,
             this.ColValue});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView1.Location = new System.Drawing.Point(12, 177);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(309, 422);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // ColParameters
+            // 
+            this.ColParameters.HeaderText = "Parameters";
+            this.ColParameters.Name = "ColParameters";
+            this.ColParameters.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColParameters.Width = 150;
+            // 
+            // ColValue
+            // 
+            this.ColValue.HeaderText = "Values";
+            this.ColValue.Name = "ColValue";
+            this.ColValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColValue.Width = 150;
             // 
             // menuStrip1
             // 
@@ -132,6 +147,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadDatumTransformationParametersToolStripMenuItem,
             this.importLLHtxtToolStripMenuItem,
+            this.exportToExcelToolStripMenuItem,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,6 +161,13 @@
             this.loadDatumTransformationParametersToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
             this.loadDatumTransformationParametersToolStripMenuItem.Text = "Load Datum Transformation Parameters";
             this.loadDatumTransformationParametersToolStripMenuItem.Click += new System.EventHandler(this.loadDatumTransformationParametersToolStripMenuItem_Click);
+            // 
+            // importLLHtxtToolStripMenuItem
+            // 
+            this.importLLHtxtToolStripMenuItem.Name = "importLLHtxtToolStripMenuItem";
+            this.importLLHtxtToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.importLLHtxtToolStripMenuItem.Text = "Import LLH (*.txt)";
+            this.importLLHtxtToolStripMenuItem.Click += new System.EventHandler(this.importLLHtxtToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -202,6 +225,40 @@
             this.autoProcessAllThreeStepsToolStripMenuItem.Size = new System.Drawing.Size(352, 22);
             this.autoProcessAllThreeStepsToolStripMenuItem.Text = "Auto Process All Three Steps";
             this.autoProcessAllThreeStepsToolStripMenuItem.Click += new System.EventHandler(this.autoProcessAllThreeStepsToolStripMenuItem_Click);
+            // 
+            // settingToolStripMenuItem
+            // 
+            this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importOrGenerateRowsToolStripMenuItem});
+            this.settingToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
+            this.settingToolStripMenuItem.Text = "Setting";
+            // 
+            // importOrGenerateRowsToolStripMenuItem
+            // 
+            this.importOrGenerateRowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importModeToolStripMenuItem,
+            this.generateRowsModeToolStripMenuItem});
+            this.importOrGenerateRowsToolStripMenuItem.Name = "importOrGenerateRowsToolStripMenuItem";
+            this.importOrGenerateRowsToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.importOrGenerateRowsToolStripMenuItem.Text = "Import or Generate Rows";
+            // 
+            // importModeToolStripMenuItem
+            // 
+            this.importModeToolStripMenuItem.Checked = true;
+            this.importModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.importModeToolStripMenuItem.Name = "importModeToolStripMenuItem";
+            this.importModeToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.importModeToolStripMenuItem.Text = "Import Mode";
+            this.importModeToolStripMenuItem.Click += new System.EventHandler(this.importModeToolStripMenuItem_Click);
+            // 
+            // generateRowsModeToolStripMenuItem
+            // 
+            this.generateRowsModeToolStripMenuItem.Name = "generateRowsModeToolStripMenuItem";
+            this.generateRowsModeToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.generateRowsModeToolStripMenuItem.Text = "Generate Rows mode";
+            this.generateRowsModeToolStripMenuItem.Click += new System.EventHandler(this.generateRowsModeToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -270,14 +327,14 @@
             // dataGridView2
             // 
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColPoint,
@@ -294,14 +351,14 @@
             this.ColLong2,
             this.Colh2});
             this.dataGridView2.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView2.Location = new System.Drawing.Point(327, 177);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(1031, 422);
@@ -375,56 +432,6 @@
             this.Colh2.Name = "Colh2";
             this.Colh2.Width = 60;
             // 
-            // lblImportGenerate
-            // 
-            this.lblImportGenerate.AutoSize = true;
-            this.lblImportGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImportGenerate.Location = new System.Drawing.Point(584, 58);
-            this.lblImportGenerate.Name = "lblImportGenerate";
-            this.lblImportGenerate.Size = new System.Drawing.Size(251, 16);
-            this.lblImportGenerate.TabIndex = 22;
-            this.lblImportGenerate.Text = "Choose {Import or Generate Row}: Import";
-            // 
-            // settingToolStripMenuItem
-            // 
-            this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importOrGenerateRowsToolStripMenuItem});
-            this.settingToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
-            this.settingToolStripMenuItem.Text = "Setting";
-            // 
-            // importOrGenerateRowsToolStripMenuItem
-            // 
-            this.importOrGenerateRowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importModeToolStripMenuItem,
-            this.generateRowsModeToolStripMenuItem});
-            this.importOrGenerateRowsToolStripMenuItem.Name = "importOrGenerateRowsToolStripMenuItem";
-            this.importOrGenerateRowsToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.importOrGenerateRowsToolStripMenuItem.Text = "Import or Generate Rows";
-            // 
-            // importModeToolStripMenuItem
-            // 
-            this.importModeToolStripMenuItem.Checked = true;
-            this.importModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.importModeToolStripMenuItem.Name = "importModeToolStripMenuItem";
-            this.importModeToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.importModeToolStripMenuItem.Text = "Import Mode";
-            this.importModeToolStripMenuItem.Click += new System.EventHandler(this.importModeToolStripMenuItem_Click);
-            // 
-            // generateRowsModeToolStripMenuItem
-            // 
-            this.generateRowsModeToolStripMenuItem.Name = "generateRowsModeToolStripMenuItem";
-            this.generateRowsModeToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.generateRowsModeToolStripMenuItem.Text = "Generate Rows mode";
-            this.generateRowsModeToolStripMenuItem.Click += new System.EventHandler(this.generateRowsModeToolStripMenuItem_Click);
-            // 
-            // importLLHtxtToolStripMenuItem
-            // 
-            this.importLLHtxtToolStripMenuItem.Name = "importLLHtxtToolStripMenuItem";
-            this.importLLHtxtToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
-            this.importLLHtxtToolStripMenuItem.Text = "Import LLH (*.txt)";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -447,19 +454,22 @@
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
-            // ColParameters
+            // lblImportGenerate
             // 
-            this.ColParameters.HeaderText = "Parameters";
-            this.ColParameters.Name = "ColParameters";
-            this.ColParameters.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColParameters.Width = 150;
+            this.lblImportGenerate.AutoSize = true;
+            this.lblImportGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImportGenerate.Location = new System.Drawing.Point(584, 58);
+            this.lblImportGenerate.Name = "lblImportGenerate";
+            this.lblImportGenerate.Size = new System.Drawing.Size(251, 16);
+            this.lblImportGenerate.TabIndex = 22;
+            this.lblImportGenerate.Text = "Choose {Import or Generate Row}: Import";
             // 
-            // ColValue
+            // exportToExcelToolStripMenuItem
             // 
-            this.ColValue.HeaderText = "Values";
-            this.ColValue.Name = "ColValue";
-            this.ColValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColValue.Width = 150;
+            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
+            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.exportToExcelToolStripMenuItem.Text = "Export to Excel";
+            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportToExcelToolStripMenuItem_Click);
             // 
             // FrmTransformation
             // 
@@ -534,5 +544,6 @@
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColParameters;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColValue;
+        private System.Windows.Forms.ToolStripMenuItem exportToExcelToolStripMenuItem;
     }
 }

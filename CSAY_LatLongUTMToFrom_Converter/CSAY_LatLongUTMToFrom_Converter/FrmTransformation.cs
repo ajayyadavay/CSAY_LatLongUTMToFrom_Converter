@@ -6,9 +6,11 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CSAY_LatLongUTMToFrom_Converter
 {
@@ -187,18 +189,18 @@ namespace CSAY_LatLongUTMToFrom_Converter
                 diff = Math.Abs(phi0 - phi1);
                 //MessageBox.Show("diff = " + diff.ToString());
             }
-            MessageBox.Show("phi1 = " + phi1.ToString() + "\nphi0 = " + phi0.ToString());
+            //MessageBox.Show("phi1 = " + phi1.ToString() + "\nphi0 = " + phi0.ToString());
             
 
             nu = a2 / Math.Sqrt(1 - e2 * Math.Sin(phi1) * Math.Sin(phi1));
-            MessageBox.Show("nu = " + nu.ToString());
+            //MessageBox.Show("nu = " + nu.ToString());
 
             h = p / Math.Cos(phi1) - nu;
-            MessageBox.Show("h = " + h.ToString());
+            //MessageBox.Show("h = " + h.ToString());
 
             LLH[0] = phi1 * 180.0 / Math.PI; //latitude in decimal degree
 
-            MessageBox.Show("lat1 = " + LLH[0].ToString());
+           // MessageBox.Show("lat1 = " + LLH[0].ToString());
 
             LLH[1] = lambda * 180.0 / Math.PI; //longitude in decimal degree
             LLH[2] = h; // ellipsoidal height in meter
@@ -336,7 +338,7 @@ namespace CSAY_LatLongUTMToFrom_Converter
         private void autoProcessAllThreeStepsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             geodeticTo3DCartesianForDatum1ToolStripMenuItem_Click(sender, e);
-            dCartesianToGeodeticForDatum2ToolStripMenuItem_Click(sender, e);
+            dCartesianTransformationUsing7ParameterToolStripMenuItem_Click(sender, e);
             dCartesianToGeodeticForDatum2ToolStripMenuItem_Click(sender, e);
         }
 
@@ -384,6 +386,128 @@ namespace CSAY_LatLongUTMToFrom_Converter
 
                     row++;
                 }
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void importLLHtxtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path;
+            OpenFileDialog openfiledialog1 = new OpenFileDialog();
+            openfiledialog1.Filter = "Text File(*.txt)|*.txt";//"Text File(*.txt)|*.txt|Excel Sheet(*.xls)|*.xls|All Files(*.*)|*.*";
+            openfiledialog1.FilterIndex = 1;
+
+            if (openfiledialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                path = openfiledialog1.FileName;
+                LoadTxtToDatagridview(dataGridView2, path, 1, 4);
+            }
+            else if (openfiledialog1.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return;
+            //string filename = Environment.CurrentDirectory + "\\LATLONG.txt";
+        }
+
+        public void LoadTxtToDatagridview(DataGridView Dgv, string FileName, int TxtStartRow, int no_of_Col)
+        {
+            string[] ReadingText = new string[100];
+            //string RWYCoordFilenName;
+            int i;
+            StreamReader sr;
+            string line;
+
+
+            line = "";
+            //FileName = @".\InputFolder\" + TxtAirportCode.Text + "\\" + "Strip_RL.txt";
+            //Pass the file path and file name to the StreamReader constructor
+            sr = new StreamReader(FileName);
+            //Read the first line of text
+            line = sr.ReadLine();
+            ReadingText[0] = line;
+            //Continue to read until you reach end of file
+            i = 1;
+            while (line != null)
+            {
+                //Read the next line
+                line = sr.ReadLine();
+                ReadingText[i] = line;
+                i++;
+            }
+            //close the file
+            sr.Close();
+
+            //load RL data of strip
+            Dgv.Rows.Clear();
+            int startrow = TxtStartRow;
+            int sn = 1;
+            for (int row = startrow; row < (i - startrow); row++)
+            {
+                Dgv.Rows.Add();
+                //Dgv.Rows[row - startrow].Cells[0].Value = sn.ToString();
+                sn++;
+            }
+
+            for (int row = startrow; row < (i - startrow); row++)
+            {
+                string[] splittedtext = ReadingText[row].Split('\t');
+                for (int col = 0; col < no_of_Col; col++)
+                {
+                    Dgv.Rows[row - startrow].Cells[col].Value = splittedtext[col];
+                }
+            }
+
+        }
+        private void CopyAlltoClipboard()
+        {
+            dataGridView2.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView2.MultiSelect = true;
+            dataGridView2.SelectAll();
+            DataObject dataObj = dataGridView2.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+        private void exportToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CopyAlltoClipboard();
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+
+                ((Excel.Range)xlWorkSheet.Cells[1, 1]).Value = groupBox1.Text + "  " + DateTime.Now.ToString("yyyy/MM/dd_HH:mm:ss");
+                int r = 0;
+                for(int i = 3; i<=16; i++)
+                {
+                    for(int j = 1; j<=2; j++)
+                    {
+                        ((Excel.Range)xlWorkSheet.Cells[i, j]).Value = dataGridView1.Rows[r].Cells[j - 1].Value;
+                    }
+                    r++;
+                }
+                
+                //((Excel.Range)xlWorkSheet.Cells[2, 1]).Value = "Projection system";
+                //value of IMS in Cell[1,2]
+                //((Excel.Range)xlWorkSheet.Cells[2, 2]).Value = "UTM WGS 84";
+
+
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[3, 4];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+                // xlWorkBook.Close();
+                //  xlexcel.Quit();
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(xlWorkSheet);
+
+                MessageBox.Show("Export Completed Sucessfully.");
 
             }
             catch
