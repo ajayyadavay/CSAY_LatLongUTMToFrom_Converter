@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -129,6 +130,11 @@ namespace CSAY_LatLongUTMToFrom_Converter
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void technicalAndUserManualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("Technical and User manual for transformation and projection.pdf");
         }
     }
 }

@@ -1,7 +1,7 @@
 Ellipsoid	MUTM84_Everest_1830
-Projection	UTM
+Projection	MUTM
 CM	84
-MajorAxis_a	6377276.345
+SemiMajorAxis_a	6377276.345
 1/f	300.8017 
 K0	0.9999
 M0	0

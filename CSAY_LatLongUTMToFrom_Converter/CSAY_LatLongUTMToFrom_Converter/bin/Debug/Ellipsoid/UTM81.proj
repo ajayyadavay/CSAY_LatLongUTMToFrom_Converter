@@ -1,7 +1,7 @@
 Ellipsoid	WGS84
 Projection	UTM
 Zone	44
-MajorAxis_a	6378137.0
+SemiMajorAxis_a	6378137.0
 1/f	298.257223563 
 K0	0.9996
 M0	0
